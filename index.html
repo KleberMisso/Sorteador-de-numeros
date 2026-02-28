@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteador de Números</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo-container">
+        <img src="img/logo.svg" alt="Logo" class="logo">
+        </div>
+    </header>
+
+<main class="page"> 
+
+    <section class="sectiondesign">  
+        
+
+        <div class="content">
+            <span>ONLINE - GRATUITO</span>
+
+            <h1>SORTEADOR <br> DE NÚMEROS</h1>
+
+            <h2>
+                <img src="img/frame.svg" alt="" class="icon-question">
+                Como funciona o sorteador de números?</h2>
+            <p>
+                O sorteador utiliza um algoritmo de geração aleatória para criar 
+                números dentro do intervalo especificado pelo usuário.
+            </p>
+
+            <h2>
+                <img src="img/frame.svg" alt="" class="icon-question">
+                Posso escolher o intervalo dos números?</h2>    
+            <p>
+                Sim, você pode definir os valores mínimo e máximo para o 
+                intervalo dos números sorteados.
+            </p>   
+        </div> 
+             
+        <form class="contentform" aria-labelledby="form-title">
+            <div class="form-content">
+
+            <h3 id="form-title">QUERO SORTEAR:</h3>
+
+            <p>
+                Defina o intervalo e a quantidade de números, clique em "Sortear"
+                e veja os resultados na tela. É rápido e fácil!
+            </p>
+
+            <div class="inputs">
+
+                <div>
+                    <label for="quantidade">NÚMEROS</label>
+                    <input 
+                        id="quantidade" 
+                        name="quantidade"
+                        type="number" 
+                        min="1"
+                        required
+                        aria-describedby="quantidade-desc"
+                        value="1"
+                    >
+                    <small id="quantidade-desc">
+                    
+                    </small>
+                </div>
+
+                <div>
+                    <label for="de">DE</label>
+                    <input 
+                        id="de" 
+                        name="de"
+                        type="number" 
+                        min="1"
+                        required
+                        value="1"
+                    >
+                </div>
+
+                <div>
+                    <label for="ate">ATÉ</label>
+                    <input 
+                        id="ate" 
+                        name="ate"
+                        type="number" 
+                        min="1"
+                        required
+                        value="100"
+                    >
+                </div>
+
+            </div>
+
+            <div class="toggle-contentform">
+                <label class="switch" for="noRepeat">
+                    <input type="checkbox" id="noRepeat" name="noRepeat">
+                    <span class="slider" aria-hidden="true"></span>
+                </label>
+                <span class="toggle-text">Não repetir número</span>
+            </div>
+
+            <button class="btn-sortear" type="submit">
+                SORTEAR 
+                <span class="arrow" aria-hidden="true">➜</span>
+            </button>
+            
+            <p id="mensagemErro" class="erro"></p>
+            
+            </div>
+
+                        <section 
+        class="resultado-section"
+        aria-live="polite"
+        aria-atomic="true"
+        tabindex="-1"
+    >
+
+        <p class="resultado-sub">RESULTADO DO SORTEIO</p>
+        <p class="resultado-ordem">1º RESULTADO</p>
+
+        <div class="numeros-sorteados" role="status">
+            <!-- Números inseridos via JS -->
+        </div>
+
+        <button class="btn-novamente" type="button">
+            SORTEAR NOVAMENTE
+            
+        </button>
+                    <button class="btn-voltar" type="button">
+                VOLTAR
+                <span class="refresh" aria-hidden="true">↻</span>
+            </button>
+        
+
+    </section>
+
+        </form>
+
+
+
+    </section>    
+
+    <!-- Área de resultado acessível -->
+
+
+</main>
+
+<script src="scripts.js"></script>
+</body>
+</html>
