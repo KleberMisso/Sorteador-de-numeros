@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('.contentform');
   const resultadoSection = document.querySelector('.resultado-section');
   const numerosContainer = document.querySelector('.numeros-sorteados');
+  const status = document.querySelector(".status-sorteio");
 
   let ultimaQuantidade;
   let ultimoMin;
@@ -33,8 +34,14 @@ document.addEventListener('DOMContentLoaded', function () {
   return numeros;
   }
 
- function mostrarNumeros(numeros) {
+function mostrarNumeros(numeros) {
   numerosContainer.innerHTML = "";
+
+  status.textContent = "";
+  status.style.opacity = "0";
+
+  // 🔹 esconder botão antes de começar animação
+  btnNovamente.style.opacity = "0";
 
   numeros.forEach((numero, index) => {
     const span = document.createElement("span");
@@ -42,13 +49,26 @@ document.addEventListener('DOMContentLoaded', function () {
     span.classList.add("numero");
     numerosContainer.appendChild(span);
 
-    // animação com delay
     setTimeout(() => {
       span.classList.add("aparecer");
     }, index * 200);
   });
 
+  // 🔹 calcular tempo total da animação
+  const tempoTotal = numeros.length * 200;
+
+  // 🔹 mostrar botão só depois que tudo apareceu
+  setTimeout(() => {
+    btnNovamente.style.opacity = "1";
+  }, tempoTotal);
+
   resultadoSection.scrollIntoView({ behavior: "smooth" });
+
+  setTimeout(() => {
+  btnNovamente.style.opacity = "1";
+  status.textContent = "Concluído!";
+  status.style.opacity = "1";
+}, tempoTotal);
 }
 
 

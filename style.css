@@ -210,6 +210,14 @@ input {
   margin-right: 6px;
 }
 
+.icon-voltar {
+  font-size: 16px;
+  margin-right: 2px;
+  position: relative;
+  top: -1.5px;
+
+}
+
 .btn-sortear:hover .arrow {
   transform: translateX(3px);
 }
@@ -229,6 +237,10 @@ input {
 }
 
 .btn-voltar:hover {
+  text-decoration: none;
+}
+
+.btn-voltar:hover .texto-voltar {
   text-decoration: underline;
 }
 
@@ -304,13 +316,27 @@ input {
 .numero.aparecer {
   opacity: 1;
   transform: translateY(0);
+  transition: 1s;
+  
 }
 
 .oculto {
   display: none;
 }
 
+.status-sorteio {
+  top: 0;
+  left: 1;
 
+  color: #22c55e; /* verde sucesso */
+  font-weight: 600;
+  font-size: 14px;
+
+  border: 1px solid #22c55e;
+  border-radius: 8px;
+  padding: 4px 10px;
+
+}
 
 .btn-novamente {
   width: 100%;
@@ -320,6 +346,8 @@ input {
   color: aliceblue;
   border: none;
   cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 
   display: flex;
   align-items: center;
@@ -327,7 +355,7 @@ input {
   gap: 10px;
 
   font-weight: 600;
-  transition: background 0.3s ease;
+
 }
 
 .btn-novamente:hover {
@@ -340,6 +368,51 @@ input {
 
 .btn-novamente:hover .refresh {
   transform: rotate(180deg);
+}
+
+.btn-sortear,
+.btn-novamente {
+  position: relative;
+  z-index: 1;
+  border-radius: 10px;
+  background: #0b0b0f; /* fundo interno do botão */
+}
+
+/* camada da borda colorida */
+.btn-sortear::before,
+.btn-novamente::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* espessura da borda */
+  border-radius: 10px;
+
+  background: linear-gradient(
+    90deg,
+    #00f0ff,
+    #8b5cf6,
+    #ff00c8,
+    #00f0ff
+  );
+
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  z-index: -1;
+}
+
+.btn-sortear::before,
+.btn-novamente::before {
+  background-size: 300% 300%;
+  animation: borderMove 4s linear infinite;
+}
+
+@keyframes borderMove {
+  0% { background-position: 0% 25% 50%; }
+  50% { background-position: 50% 25%; }
 }
 
 .erro {
